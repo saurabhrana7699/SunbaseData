@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Search Employee</title>
+</head>
+<body>
+    
+    <div id="main">
+         <div class="form">
+
+            <div class="emp__name">
+                <input type="number" placeholder="Enter Your Employee ID" id="name">
+
+           </div>
+           <br>
+<div id="submit"> <button id="btn"> Submit</button></div>
+           
+         </div>
+         <div id="data"> </div>
+    </div>
+
+
+   
+</body>
+</html>
+<script>
+
+
+document.getElementById("btn").addEventListener("click", () =>{
+    addData()
+   
+    
+})
+
+let addData =  async() =>{
+    let arr = []
+ 
+    let data ={
+
+        employeID:document.getElementById("name").value
+    }
+ 
+    let url= `http://localhost:8888/viwadbyid/${data.employeID}`;
+  
+  fetch(url)
+  .then(res => {
+    return res.json()
+  }) 
+
+  .then(res =>{
+    console.log(res)
+ 
+    append(res)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+  
+}
+
+function append(data){
+    let con = document.getElementById("data")
+
+    con.innerHTML = null
+
+    let h1 = document.createElement("h1");
+        h1.innerText =  `First Name:- ${data.first_name}`
+
+        let h2 = document.createElement("h1");
+        h2.innerText = `Last Name :- ${data.last_name}`
+ 
+
+        let h3 = document.createElement("h2");
+        h3.innerText = `Street :- ${data.street}`
+
+        let h4 = document.createElement("h2");
+        h4.innerText = `Address :- ${data.address}`
+
+        let h5 = document.createElement("h2");
+        h5.innerText = `City :- ${data.city}`
+
+        let h6 = document.createElement("h2");
+        h6.innerText =  `State :- ${data.state}`;
+
+        let h7 = document.createElement("h2");
+        h7.innerText =  `Email :- ${data.email}`;
+
+        let h8 = document.createElement("h2");
+        h8.innerText =  `Phone :- ${data.phone}`;
+
+
+
+
+
+        con.append(h1,h2,h3,h4,h5,h6,h7,h8)
+
+}
+
+
+
+
+
+</script>

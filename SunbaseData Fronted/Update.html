@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Update Page</title>
+</head>
+<body>
+    
+    <div id="main">
+         <div class="form">
+
+            <div class="emp__id">
+                <input type="number" placeholder="Enter Your Id" id="id">
+
+            </div>
+
+            <div class="emp__name">
+                <input type="text" placeholder="Enter Your First Name" id="Fname">
+
+            </div>
+
+            <div class="emp__name">
+                <input type="text" placeholder="Enter Your Last Name" id="Lname">
+
+            </div>
+
+
+            <div class="emp__name">
+                <input type="text" placeholder="Enter Your Street" id="street">
+
+            </div>
+
+            <div class="emp__Address">
+                <textarea name="" id="address" cols="30" rows="10 " placeholder="Enter Your Address" ></textarea>
+ 
+             </div>
+
+             <div class="emp__name">
+                <input type="text" placeholder="Enter Your City" id="city">
+
+            </div>
+
+            <div class="emp__name">
+                <input type="text" placeholder="Enter Your State" id="state">
+
+            </div>
+
+            <div class="emp__Mail">
+                <input type="text" placeholder="Enter Your Mail ID" id="Mail">
+
+            </div>
+
+            <div class="emp__Number">
+                <input type="text" placeholder="Enter Your Contact Number" id="Number">
+
+            </div>
+
+
+            
+
+            <br>
+<div id="submit"> <button id="btn"> Submit</button></div>
+           
+         </div>
+    </div>
+</body>
+</html>
+
+<script>
+
+document.getElementById("btn").addEventListener("click", () =>{
+    addData()
+    alert("Task Added Sucessfully");
+    window.location.reload()
+})
+
+let addData =  async() =>{
+
+ 
+    let data ={
+
+        employeID:document.getElementById("id").value,
+       first_name: document.getElementById("Fname").value,
+        last_name:document.getElementById("Lname").value,
+        street:document.getElementById("street").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        state:document.getElementById("state").value,
+        email: document.getElementById("Mail").value,
+        phone: document.getElementById("Number").value,
+
+    }
+ 
+   
+   
+    let url= `http://localhost:8888/update`;
+  
+    let res = await fetch(url,{
+        method : "PUT",
+        body : JSON.stringify(data),
+        headers : {
+            "Content-Type" : "application/json"
+        },
+    });
+
+  
+}
+
+
+
+
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title  >Delete Page</title>
+</head>
+<body>
+    
+    <div id="main">
+         <div class="form">
+
+            <div class="emp__name">
+                <input type="number" placeholder="Enter Your Employee ID" id="name">
+
+           </div>
+           <br>
+<div id="submit"> <button id="btn"> Submit</button></div>
+           
+         </div>
+    </div>
+</body>
+</html>
+<script>
+document.getElementById("btn").addEventListener("click", () =>{
+    addData()
+   
+    window.location.reload()
+})
+
+let addData =  async() =>{
+
+ 
+    let data ={
+
+        employeID:document.getElementById("name").value
+       
+  
+    }
+ 
+    let url= `http://localhost:8888/delete/${data.employeID}`;
+  
+    let res = await fetch(url,{
+        method : "DELETE",
+        body : JSON.stringify(data),
+        headers : {
+            "Content-Type" : "application/json"
+        },
+    });
+
+  
+}
+
+
+
+
+
+
+
+</script>
